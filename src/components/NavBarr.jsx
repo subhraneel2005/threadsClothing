@@ -4,43 +4,35 @@ import { CiShoppingCart } from "react-icons/ci";
 
 function NavBarr() {
   const navRef = useRef(null);
-  let lastScrollY = window.scrollY;
+  let lastScrollY = 0;
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY) {
-        // User is scrolling down, hide the navbar
-        gsap.to(navRef.current, { y: '-100%', opacity: 0, duration: 0.5 });
-      } else {
-        // User is scrolling up, show the navbar
-        gsap.to(navRef.current, { y: '0%', opacity: 1, duration: 0.5 });
-      }
-      lastScrollY = currentScrollY;
-    };
+    if (typeof window !== 'undefined') {
+      lastScrollY = window.scrollY;
+      
+      const handleScroll = () => {
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > lastScrollY) {
+          // User is scrolling down, hide the navbar
+          gsap.to(navRef.current, { y: '-100%', opacity: 0, duration: 0.5 });
+        } else {
+          // User is scrolling up, show the navbar
+          gsap.to(navRef.current, { y: '0%', opacity: 1, duration: 0.5 });
+        }
+        lastScrollY = currentScrollY;
+      };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+      window.addEventListener('scroll', handleScroll);
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }
   }, []);
 
-  const scrollToAboutUs = () => {
-    const aboutUsSection = document.getElementById("aboutUs");
-    if (aboutUsSection) {
-      aboutUsSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-  const scrollToCollections = () => {
-    const contactUsSection = document.getElementById("collections");
-    if (contactUsSection) {
-      contactUsSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-  const scrollToHomePage = () => {
-    const homePageSection = document.getElementById("homePage");
-    if (homePageSection) {
-      homePageSection.scrollIntoView({ behavior: "smooth" });
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -50,9 +42,9 @@ function NavBarr() {
         <ul><li className="font-bold">Threads Clothing</li></ul>
       </div>
       <ul className="flex gap-5 font-bold">
-        <li className="cursor-pointer" onClick={scrollToHomePage}>Home</li>
-        <li className="cursor-pointer" onClick={scrollToCollections}>Collections</li>
-        <li className="cursor-pointer" onClick={scrollToAboutUs}>About Us</li>
+        <li className="cursor-pointer" onClick={() => scrollToSection('homePage')}>Home</li>
+        <li className="cursor-pointer" onClick={() => scrollToSection('collections')}>Collections</li>
+        <li className="cursor-pointer" onClick={() => scrollToSection('aboutUs')}>About Us</li>
       </ul>
       <ul className="flex gap-1 font-bold">
         <li>Cart</li>
