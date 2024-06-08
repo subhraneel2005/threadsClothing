@@ -9,6 +9,7 @@ import heroImg from "../../public/heroImg.jpg"
 import OurCollections from "@/components/OurCollections";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AboutUs from "@/components/AboutUs";
+import BottomBarr from "@/components/BottomBarr";
 
 export default function Home() {
 
@@ -62,7 +63,7 @@ export default function Home() {
   return (
    <div className="w-full absolute select-none">
     <NavBarr/>
-    <div className="h-screen w-full flex justify-center items-center">
+    <div className="h-screen w-full flex justify-center items-center" id="homePage">
     <div className="getStarted border border-slate-200 rounded-lg cursor-pointer flex gap-3 justify-center items-center px-3 py-2">
       <p>Get Started</p>
       <GoArrowRight size={30} className="hover:rotate-90 transition-transform duration-300" />
@@ -76,6 +77,7 @@ export default function Home() {
     </div>
     <OurCollections/>
     <AboutUs/>
+    <BottomBarr/>
    </div>
   );
 }

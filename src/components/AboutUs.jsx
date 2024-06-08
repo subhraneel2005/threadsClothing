@@ -5,7 +5,7 @@ import aboutUs from "../../public/aboutUs.jpg"
 function AboutUs() {
   return (
         <div id="aboutUs" className="min-h-screen w-full flex justify-center items-center">
-            <div className="h-auto w-auto block space-y-3">
+            <div className="h-auto w-auto block space-y-3 md:space-y-10">
             <div className="flex justify-center items-center h-auto w-auto">
             <h1 className="text-[7vw] text-center">About Us</h1>
             <Image id="aboutUsImg" alt="aboutUS image" height={200} width={400} src={aboutUs} className="-z-10 rounded-[24px]"/>
