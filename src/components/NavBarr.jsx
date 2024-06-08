@@ -5,7 +5,7 @@ import { CiShoppingCart } from "react-icons/ci";
 function NavBarr() {
 
   return (
-    <div ref={navRef} className="sticky bg-gray-950 bg-opacity-80 top-0 px-2 py-6 bg-transparent md:px-2 flex justify-evenly">
+    <div className="sticky bg-gray-950 bg-opacity-80 top-0 px-2 py-6 bg-transparent md:px-2 flex justify-evenly">
       <div className="flex items-center justify-center">
         <ul><li className="font-bold">Threads Clothing</li></ul>
       </div>
